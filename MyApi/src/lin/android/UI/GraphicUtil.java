@@ -21,15 +21,15 @@ public class GraphicUtil {
 	/**
 	 * 
 	 * @param gl
-	 * @param x			ÖÐµãX×ø±ê
-	 * @param y			ÖÐµãY×ø±ê
-	 * @param width		»­Í¼¿í¶È
-	 * @param height	»­Í¼¸ß¶È
-	 * @param texture	texture Í¼ÐÎID
-	 * @param u			Í¼ÐÎÎÆÀíÆðµãX
-	 * @param v			Í¼ÐÎÎÆÀíÆðµãY
-	 * @param tex_w		ÎÆÀí¿í¶È
-	 * @param tex_h		ÎÆÀí¸ß¶È
+	 * @param x			ï¿½Ðµï¿½Xï¿½ï¿½ï¿½
+	 * @param y			ï¿½Ðµï¿½Yï¿½ï¿½ï¿½
+	 * @param width		ï¿½ï¿½Í¼ï¿½ï¿½ï¿½
+	 * @param height	ï¿½ï¿½Í¼ï¿½ß¶ï¿½
+	 * @param texture	texture Í¼ï¿½ï¿½ID
+	 * @param u			Í¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½X
+	 * @param v			Í¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Y
+	 * @param tex_w		ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * @param tex_h		ï¿½ï¿½ï¿½ï¿½ß¶ï¿½
 	 * @param r
 	 * @param g
 	 * @param b
@@ -71,7 +71,7 @@ public class GraphicUtil {
 		gl.glTexCoordPointer(2, GL10.GL_FLOAT, 0, texCoords);
 		gl.glEnableClientState(GL10.GL_TEXTURE_COORD_ARRAY);
 	 
-		gl.glBlendFunc(GL10.GL_SRC_ALPHA, GL10.GL_ONE_MINUS_SRC_ALPHA);
+//		gl.glBlendFunc(GL10.GL_SRC_ALPHA, GL10.GL_ONE_MINUS_SRC_ALPHA);
 //		gl.glEnable(GL10.GL_BLEND);
 		
 		gl.glDrawArrays(GL10.GL_TRIANGLE_STRIP, 0, 4);
