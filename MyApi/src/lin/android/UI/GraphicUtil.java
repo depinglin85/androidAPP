@@ -21,15 +21,15 @@ public class GraphicUtil {
 	/**
 	 * 
 	 * @param gl
-	 * @param x			�е�X���
-	 * @param y			�е�Y���
-	 * @param width		��ͼ���
-	 * @param height	��ͼ�߶�
-	 * @param texture	texture ͼ��ID
-	 * @param u			ͼ���������X
-	 * @param v			ͼ���������Y
-	 * @param tex_w		������
-	 * @param tex_h		����߶�
+	 * @param x
+	 * @param y
+	 * @param width
+	 * @param height
+	 * @param texture
+	 * @param u
+	 * @param v
+	 * @param tex_w
+	 * @param tex_h
 	 * @param r
 	 * @param g
 	 * @param b
@@ -72,8 +72,10 @@ public class GraphicUtil {
 		gl.glEnableClientState(GL10.GL_TEXTURE_COORD_ARRAY);
 	 
 //		gl.glBlendFunc(GL10.GL_SRC_ALPHA, GL10.GL_ONE_MINUS_SRC_ALPHA);
+		gl.glBlendFunc(GL10.GL_ONE, GL10.GL_ONE_MINUS_SRC_ALPHA);
+		gl.glEnable(GL10.GL_BLEND);
+//		gl.glBlendFunc(GL11.GL_ONE,GL11.GL_ONE_MINUS_SRC_ALPHA);
 //		gl.glEnable(GL10.GL_BLEND);
-		
 		gl.glDrawArrays(GL10.GL_TRIANGLE_STRIP, 0, 4);
 	 
 		gl.glDisableClientState(GL10.GL_TEXTURE_COORD_ARRAY);
@@ -99,8 +101,11 @@ public class GraphicUtil {
 		bitmap = Bitmap.createBitmap(bitmapSize[1]*size, bitmapSize[0]*size, config);
 		Canvas canvas = new Canvas(bitmap);
 		Paint textPaint = new Paint();
-		textPaint.setColor(Color.WHITE);
+//		textPaint.setColor(Color.WHITE);
 		textPaint.setTextSize(textSize);
+		
+		textPaint.setAntiAlias(true);
+		textPaint.setARGB(0xff, 0xff, 0xff, 0xff);
 		
 		String[] string = str.split("\n");
 		for(int i=0 ;i<string.length; i++){

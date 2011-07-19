@@ -49,7 +49,7 @@ public class TextApiRenderer implements Renderer{
 		h2 = (float)bitmap.getHeight()/854*2;
 		mTextureIdbg = GraphicUtil.loadBitmapToTexture(gl, bitmap);
 		
-		String str ="1.���ڽ��õĹ���Ŀ¼���ҵ���:D�����½�һ��drawable�ļ���\n,�ѱ���ͼƬ�Ž�ȥ�����õ���bg1.png������:";
+		String str ="モバイル・コンテンツ・フォーラム（MCF）は、\n2010年1月～12月のモバイルコンテンツ市場およびモバイルコンテンツ市場の調査結果を公表した。\n今回よりスマートフォンなどのオープンプラットフォーム\n市場についても調査結果がまとめられている。";
 		bitmap = GraphicUtil.makeTextToTexture(str, 20, 450);
 		ctx = GraphicUtil.getXToGLX(bitmap, 18);
 		cty = GraphicUtil.getYToGLY(bitmap, 0);
