@@ -4,6 +4,7 @@ import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
 import lin.android.UI.GraphicUtil;
+import lin.android.UI.UIApater;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -40,7 +41,7 @@ public class TextApiRenderer implements Renderer{
 		w = (float)bitmap.getWidth()/480*2;
 		h = (float)bitmap.getHeight()/854*2;
 		cx = GraphicUtil.getXToGLX(bitmap, 100);
-		cy = GraphicUtil.getYToGLY(bitmap, 0);
+		cy = GraphicUtil.getYToGLY(bitmap, 100);
 		
 		mTextureId = GraphicUtil.loadBitmapToTexture(gl, bitmap);
 		
@@ -69,10 +70,11 @@ public class TextApiRenderer implements Renderer{
 	@Override
 	public void onDrawFrame(GL10 gl) {
 		GraphicUtil.drawTexture(gl, 0.0f, 0.0f, 2.0f, 3.0f, mTextureIdbg, 0, 0, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f);
-		GraphicUtil.drawTexture(gl, 0, 0, 2.0f ,3.0f, mTextureId, 0, 0, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f);
-		GraphicUtil.drawTexture(gl, cx, 0, w ,h, mTextureId, 0, 0, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f);
+//		GraphicUtil.drawTexture(gl, 0, 0, 2.0f ,3.0f, mTextureId, 0, 0, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f);
+		GraphicUtil.drawTexture(gl, cx, cy, w ,h, mTextureId, 0, 0, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f);
 		GraphicUtil.drawTexture(gl, ctx, cty, tw, th, mTextTextureId, 0, 0, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f);
-		
+//		GraphicUtil.drawRect(gl, 100, 100, UIApater.getInstance().getLocalWidth(), UIApater.getInstance().getLocalHeight(), 0.0f, 0.0f, 0.0f, 0.5f);
+		GraphicUtil.drawRect(gl, 0, 0, 100, 100, 1.0f, 0.0f, 0.0f, 0.5f);
 	}
 
 }

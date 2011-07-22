@@ -82,6 +82,36 @@ public class GraphicUtil {
 		gl.glDisable(GL10.GL_TEXTURE_2D);
 	}
 	
+	public static void drawRect(GL10 gl, int x, int y, int width, int height, float r, float g, float b, float a){
+		
+		float w = (float) width/UIApater.getInstance().getLocalWidth()*2;
+		float h = (float) height/UIApater.getInstance().getLocalHeight()*2;
+		float cy = (float) (UIApater.getInstance().getLocalHeight() - 2*y - height)/(UIApater.getInstance().getLocalHeight());
+		float cx = (float) -(UIApater.getInstance().getLocalWidth()-2*x-width)/(UIApater.getInstance().getLocalWidth());
+		
+		float[] vertices = {
+				-0.5f * w + cx, -0.5f * h + cy,
+				 0.5f * w + cx, -0.5f * h + cy,
+				-0.5f * w + cx,  0.5f * h + cy,
+				 0.5f * w + cx,  0.5f * h + cy,
+		};
+		float[] colors = {
+				r, g, b, a,
+				r, g, b, a,
+				r, g, b, a,
+				r, g, b, a,
+			};
+		FloatBuffer polygonVertices = makeFloatBuffer(vertices);
+		FloatBuffer polygonColors = makeFloatBuffer(colors);
+		gl.glVertexPointer(2, GL10.GL_FLOAT, 0, polygonVertices);
+		gl.glEnableClientState(GL10.GL_VERTEX_ARRAY);
+		gl.glColorPointer(4, GL10.GL_FLOAT, 0, polygonColors);
+		gl.glEnableClientState(GL10.GL_COLOR_ARRAY);
+		gl.glBlendFunc(GL10.GL_ONE, GL10.GL_ONE_MINUS_SRC_ALPHA);
+		gl.glEnable(GL10.GL_BLEND);
+		gl.glDrawArrays(GL10.GL_TRIANGLE_STRIP, 0, 4);
+		
+	}
 	
 	
 	/**
@@ -179,7 +209,14 @@ public class GraphicUtil {
 		return -1.0f +(float)(bitmap.getWidth()+2*x)/UIApater.getInstance().getLocalWidth();
 	}
 	public static float getYToGLY(Bitmap bitmap, int y){
-		return 1.0f-((float)bitmap.getHeight()/UIApater.getInstance().getLocalHeight()) ;
+		return 1.0f-((float)bitmap.getHeight()/UIApater.getInstance().getLocalHeight())-(float)2*y/UIApater.getInstance().getLocalHeight();
+	}
+	
+	public static float getTextureWidth(Bitmap bitmap){
+		return (float) bitmap.getWidth()/UIApater.getInstance().getLocalWidth()*2;
+	}
+	public static float getTextureHeight(Bitmap bitmap){
+		return (float) bitmap.getHeight()/UIApater.getInstance().getLocalHeight()*2;
 	}
 	
 	public static Bitmap loadBitmapFromResource(Resources resources, int recsourcID, BitmapFactory.Options options){
@@ -196,5 +233,6 @@ public class GraphicUtil {
 		fb.position(0);
 		return fb;
 	}
+	
 	
 }
